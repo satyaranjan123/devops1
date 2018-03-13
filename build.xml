@@ -1,0 +1,17 @@
+<project name="java tasks" default="run">
+<target name ="compile" description="compile the java file">
+<mkdir dir="build/classes"/>
+<javac srcdir="src" destdir="build/classes"/>
+</target>
+<target name="package" depends="compile" description="package the files">
+<mkdir dir ="build/jar"/>
+<jar destfile="build/jar/CallingMethodsInSameClass.jar" basedir="build/classes">
+<manifest>
+<attribute name="Main-Class" value="CallingMethodsInSameClass"/>
+</manifest>
+</jar>
+</target>
+<target name="run" depends="package" description="run the package">
+<java jar="build/jar/CallingMethodsInSameClass.jar" fork="true"/>
+</target>
+</project>
